@@ -3,48 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>message board</title>
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header>
     <h1>message board</h1>
     <p>community messages</p>
   </header>
 
+
+  <!-- MAIN PAGE -->
   <main class="layout">
+
+
+    <!-- FOLDERS -->
     <aside class="folders-panel">
+
       <div class="section-title">
         <h2>folders</h2>
-        <button id="refreshFolders" type="button">refresh</button>
+
+        <button
+          id="refreshFolders"
+          type="button"
+        >
+          refresh
+        </button>
       </div>
 
-      <div id="foldersList" class="folders-list"></div>
 
-      <form id="folderForm" class="folder-form">
-        <label for="folderName">new folder:</label>
-        <input id="folderName" name="folderName" maxlength="60" required>
-        <button id="createFolderButton" type="submit">create</button>
-        <p id="folderStatus" class="status" aria-live="polite"></p>
+      <!-- Folder list gets inserted here by script.js -->
+      <div
+        id="foldersList"
+        class="folders-list"
+      ></div>
+
+
+      <!-- CREATE A FOLDER -->
+      <form
+        id="folderForm"
+        class="folder-form"
+      >
+
+        <label for="folderName">
+          new folder:
+        </label>
+
+        <input
+          id="folderName"
+          name="folderName"
+          type="text"
+          maxlength="60"
+          required
+        >
+
+        <button
+          id="createFolderButton"
+          type="submit"
+        >
+          create
+        </button>
+
+        <p
+          id="folderStatus"
+          class="status"
+          aria-live="polite"
+        ></p>
+
       </form>
+
     </aside>
 
+
+    <!-- MESSAGE BOARD -->
     <div class="board-column">
+
+
+      <!-- CREATE A POST -->
       <section class="post-box">
-        <h2>post in <span id="postFolderName">folder</span></h2>
+
+        <h2>
+          post in
+          <span id="postFolderName">folder</span>
+        </h2>
+
+
         <form id="messageForm">
+
+
+          <!-- NAME -->
           <div class="field">
-            <label for="name">name:</label>
-            <input id="name" name="name" maxlength="40" required>
+
+            <label for="name">
+              name:
+            </label>
+
+            <input
+              id="name"
+              name="name"
+              type="text"
+              maxlength="40"
+              required
+            >
+
           </div>
 
+
+          <!-- MESSAGE -->
           <div class="field">
-            <label for="message">message:</label>
-            <textarea id="message" name="message" maxlength="500" rows="7" required></textarea>
+
+            <label for="message">
+              message:
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              maxlength="500"
+              rows="7"
+              required
+            ></textarea>
+
           </div>
 
+
+          <!-- PICTURE / PHONE CAMERA -->
           <div class="field">
-            <label for="postImage">picture (optional):</label>
+
+            <label for="postImage">
+              picture (optional):
+            </label>
+
             <input
               id="postImage"
               name="postImage"
@@ -52,40 +146,119 @@
               accept="image/*"
               capture="environment"
             >
-            <div class="image-help">on phones, this can open the camera. images are resized to fit within 150 × 150 pixels before upload.</div>
-            <div id="imagePreviewWrap" class="image-preview-wrap" hidden>
-              <img id="imagePreview" alt="selected image preview">
-              <button id="removeImage" type="button">remove picture</button>
+
+            <div class="image-help">
+              take a photo or choose a picture.
+              pictures are resized to a maximum
+              of 150 × 150 pixels.
             </div>
+
+
+            <!-- IMAGE PREVIEW -->
+            <div
+              id="imagePreviewWrap"
+              class="image-preview-wrap"
+              hidden
+            >
+
+              <img
+                id="imagePreview"
+                alt="selected picture preview"
+              >
+
+              <button
+                id="removeImage"
+                type="button"
+              >
+                remove picture
+              </button>
+
+            </div>
+
           </div>
 
+
+          <!-- POST BUTTON -->
           <div class="actions">
-            <button type="submit" id="submitButton">post</button>
-            <span id="charCount">0 / 500</span>
+
+            <button
+              type="submit"
+              id="submitButton"
+            >
+              post
+            </button>
+
+            <span id="charCount">
+              0 / 500
+            </span>
+
           </div>
 
-          <p id="status" class="status" aria-live="polite"></p>
+
+          <!-- STATUS MESSAGE -->
+          <p
+            id="status"
+            class="status"
+            aria-live="polite"
+          ></p>
+
         </form>
+
       </section>
 
+
+      <!-- CURRENT FOLDER MESSAGES -->
       <section>
+
         <div class="board-title">
-          <h2 id="currentFolderTitle">messages</h2>
-          <button id="refreshBoard" type="button">refresh</button>
+
+          <h2 id="currentFolderTitle">
+            messages
+          </h2>
+
+          <button
+            id="refreshBoard"
+            type="button"
+          >
+            refresh
+          </button>
+
         </div>
 
-        <div id="emptyState">no messages in this folder yet.</div>
+
+        <!-- EMPTY FOLDER MESSAGE -->
+        <div id="emptyState">
+          no messages in this folder yet.
+        </div>
+
+
+        <!-- POSTS ARE INSERTED HERE -->
         <div id="messageBoard"></div>
+
       </section>
+
     </div>
+
   </main>
 
+
+  <!-- FOOTER -->
   <footer>
     <span>message board</span>
   </footer>
 
+
+  <!-- SUPABASE JAVASCRIPT LIBRARY -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+  <!-- YOUR SUPABASE URL AND PUBLIC KEY -->
   <script src="config.js"></script>
+
+
+  <!-- MESSAGE BOARD JAVASCRIPT -->
   <script src="script.js"></script>
+
+
 </body>
 </html>
