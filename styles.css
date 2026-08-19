@@ -253,8 +253,8 @@ footer {
 .image-preview-wrap img,
 .post-image {
   display: block;
-  max-width: 150px;
-  max-height: 150px;
+  max-width: min(500px, 100%);
+  max-height: 500px;
   width: auto;
   height: auto;
   object-fit: contain;
