@@ -21,7 +21,7 @@ const imagePreview = document.getElementById("imagePreview");
 const removeImageButton = document.getElementById("removeImage");
 
 const IMAGE_BUCKET = "post-images";
-const MAX_IMAGE_DIMENSION = 150;
+const MAX_IMAGE_DIMENSION = 500;
 const MAX_SOURCE_FILE_BYTES = 12 * 1024 * 1024;
 
 const configured =
