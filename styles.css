@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 8px;
@@ -10,11 +8,7 @@ body {
   background: #fff;
 }
 
-a {
-  color: #0000ee;
-  text-decoration: underline;
-  cursor: pointer;
-}
+a { color: #0000ee; text-decoration: underline; cursor: pointer; }
 
 header {
   max-width: 1000px;
@@ -47,15 +41,10 @@ header p {
   align-items: start;
 }
 
-h2 {
-  margin: 0;
-  font-size: 16px;
-}
+h2 { margin: 0; font-size: 16px; }
 
 .folders-panel,
-.post-box {
-  border: 1px solid #ccc;
-}
+.post-box { border: 1px solid #ccc; }
 
 .section-title,
 .post-box > h2,
@@ -72,13 +61,19 @@ h2 {
   align-items: center;
 }
 
-.folders-list {
-  padding: 5px 0;
+.folders-list { padding: 5px 0; }
+
+.folder-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
 }
 
 .folder-link {
+  flex: 1;
   display: block;
-  padding: 4px 8px;
+  padding: 4px 0;
   color: #0000ee;
   text-decoration: underline;
 }
@@ -98,17 +93,10 @@ h2 {
   margin-bottom: 5px;
 }
 
-.post-box {
-  margin-bottom: 18px;
-}
+.post-box { margin-bottom: 18px; }
+.post-box form { padding: 10px; }
 
-.post-box form {
-  padding: 10px;
-}
-
-.field {
-  margin-bottom: 9px;
-}
+.field { margin-bottom: 9px; }
 
 label {
   display: block;
@@ -117,8 +105,7 @@ label {
 }
 
 input,
-textarea,
-select {
+textarea {
   padding: 3px;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -128,15 +115,12 @@ select {
 }
 
 input[type="text"],
-input:not([type]),
 textarea {
   width: 100%;
   max-width: 600px;
 }
 
-textarea {
-  resize: vertical;
-}
+textarea { resize: vertical; }
 
 button {
   padding: 2px 8px;
@@ -149,10 +133,7 @@ button {
   cursor: pointer;
 }
 
-button:disabled {
-  color: #777;
-  cursor: default;
-}
+button:disabled { color: #777; cursor: default; }
 
 .actions {
   display: flex;
@@ -160,17 +141,16 @@ button:disabled {
   align-items: center;
 }
 
-#charCount {
+#charCount,
+.status,
+.image-help,
+.delete-note {
   color: #666;
   font-size: 12px;
 }
 
-.status {
-  margin: 7px 0 0;
-  min-height: 1em;
-  font-size: 12px;
-  color: #555;
-}
+.status { margin: 7px 0 0; min-height: 1em; }
+.delete-note { margin: 7px 0 0; }
 
 #emptyState {
   padding: 12px 8px;
@@ -184,14 +164,14 @@ button:disabled {
   border-bottom: 1px solid #ccc;
 }
 
-.message:nth-child(even) {
-  background: #f7f7f7;
-}
+.message:nth-child(even) { background: #f7f7f7; }
 
 .message-header {
   margin-bottom: 4px;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .author {
@@ -201,7 +181,6 @@ button:disabled {
 }
 
 .time {
-  margin-left: 8px;
   color: #666;
   font-size: 12px;
 }
@@ -212,6 +191,43 @@ button:disabled {
   overflow-wrap: anywhere;
   line-height: 1.25;
 }
+
+.delete-link {
+  padding: 0;
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: #0000ee;
+  text-decoration: underline;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.delete-link:hover { background: transparent; }
+
+.delete-countdown {
+  color: #777;
+  font-size: 11px;
+}
+
+.image-help { margin-top: 4px; }
+
+.image-preview-wrap { margin-top: 7px; }
+
+.image-preview-wrap img,
+.post-image {
+  display: block;
+  max-width: min(500px, 100%);
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 1px solid #888;
+  background: #fff;
+}
+
+.image-preview-wrap button { margin-top: 5px; }
+.post-image { margin-top: 7px; }
 
 footer {
   max-width: 1000px;
@@ -224,48 +240,7 @@ footer {
 }
 
 @media (max-width: 700px) {
-  header h1,
-  header p {
-    display: block;
-  }
-
-  header p {
-    margin: 3px 0 0;
-  }
-
-  .layout {
-    grid-template-columns: 1fr;
-  }
-
-}
-
-
-.image-help {
-  margin-top: 3px;
-  color: #666;
-  font-size: 12px;
-}
-
-.image-preview-wrap {
-  margin-top: 6px;
-}
-
-.image-preview-wrap img,
-.post-image {
-  display: block;
-  max-width: min(350px, 100%);
-  max-height: 350px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border: 1px solid #888;
-  background: #fff;
-}
-
-.image-preview-wrap button {
-  margin-top: 4px;
-}
-
-.post-image {
-  margin-top: 7px;
+  header h1, header p { display: block; }
+  header p { margin: 3px 0 0; }
+  .layout { grid-template-columns: 1fr; }
 }
