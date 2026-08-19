@@ -1,31 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>message board</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <link
+    rel="stylesheet"
+    href="styles.css"
+  >
 </head>
+
 
 <body>
 
-  <!-- HEADER -->
+  <!-- ============================= -->
+  <!-- HEADER                        -->
+  <!-- ============================= -->
+
   <header>
+
     <h1>message board</h1>
+
     <p>community messages</p>
+
   </header>
 
 
-  <!-- MAIN PAGE -->
+
+  <!-- ============================= -->
+  <!-- MAIN PAGE                     -->
+  <!-- ============================= -->
+
   <main class="layout">
 
 
-    <!-- FOLDERS -->
+    <!-- =========================== -->
+    <!-- FOLDERS                     -->
+    <!-- =========================== -->
+
     <aside class="folders-panel">
 
+
       <div class="section-title">
+
         <h2>folders</h2>
 
         <button
@@ -34,17 +58,26 @@
         >
           refresh
         </button>
+
       </div>
 
 
-      <!-- Folder list gets inserted here by script.js -->
+      <!--
+        Folders from Supabase
+        will appear here.
+      -->
+
       <div
         id="foldersList"
         class="folders-list"
       ></div>
 
 
-      <!-- CREATE A FOLDER -->
+
+      <!-- ========================= -->
+      <!-- CREATE NEW FOLDER         -->
+      <!-- ========================= -->
+
       <form
         id="folderForm"
         class="folder-form"
@@ -54,6 +87,7 @@
           new folder:
         </label>
 
+
         <input
           id="folderName"
           name="folderName"
@@ -62,12 +96,14 @@
           required
         >
 
+
         <button
           id="createFolderButton"
           type="submit"
         >
           create
         </button>
+
 
         <p
           id="folderStatus"
@@ -77,31 +113,47 @@
 
       </form>
 
+
     </aside>
 
 
-    <!-- MESSAGE BOARD -->
+
+    <!-- =========================== -->
+    <!-- MESSAGE BOARD               -->
+    <!-- =========================== -->
+
     <div class="board-column">
 
 
-      <!-- CREATE A POST -->
+      <!-- ========================= -->
+      <!-- CREATE A POST             -->
+      <!-- ========================= -->
+
       <section class="post-box">
+
 
         <h2>
           post in
-          <span id="postFolderName">folder</span>
+          <span id="postFolderName">
+            folder
+          </span>
         </h2>
+
 
 
         <form id="messageForm">
 
 
-          <!-- NAME -->
+          <!-- ===================== -->
+          <!-- USER NAME             -->
+          <!-- ===================== -->
+
           <div class="field">
 
             <label for="name">
               name:
             </label>
+
 
             <input
               id="name"
@@ -114,12 +166,17 @@
           </div>
 
 
-          <!-- MESSAGE -->
+
+          <!-- ===================== -->
+          <!-- MESSAGE               -->
+          <!-- ===================== -->
+
           <div class="field">
 
             <label for="message">
               message:
             </label>
+
 
             <textarea
               id="message"
@@ -132,39 +189,67 @@
           </div>
 
 
-          <!-- PICTURE / PHONE CAMERA -->
+
+          <!-- ===================== -->
+          <!-- PICTURE UPLOAD        -->
+          <!-- ===================== -->
+
           <div class="field">
+
 
             <label for="postImage">
               picture (optional):
             </label>
+
+
+            <!--
+              IMPORTANT:
+
+              There is intentionally NO
+              capture="environment"
+              attribute here.
+
+              This allows phones to offer
+              Gallery, Photos, Files,
+              Camera, etc.
+            -->
 
             <input
               id="postImage"
               name="postImage"
               type="file"
               accept="image/*"
-              capture="environment"
             >
 
+
             <div class="image-help">
-              take a photo or choose a picture.
+
+              choose a picture from your phone
+              or take a new photo.
+
               pictures are resized to a maximum
               of 150 × 150 pixels.
+
             </div>
 
 
-            <!-- IMAGE PREVIEW -->
+
+            <!-- =================== -->
+            <!-- PICTURE PREVIEW     -->
+            <!-- =================== -->
+
             <div
               id="imagePreviewWrap"
               class="image-preview-wrap"
               hidden
             >
 
+
               <img
                 id="imagePreview"
                 alt="selected picture preview"
               >
+
 
               <button
                 id="removeImage"
@@ -173,13 +258,20 @@
                 remove picture
               </button>
 
+
             </div>
+
 
           </div>
 
 
-          <!-- POST BUTTON -->
+
+          <!-- ===================== -->
+          <!-- POST BUTTON           -->
+          <!-- ===================== -->
+
           <div class="actions">
+
 
             <button
               type="submit"
@@ -188,33 +280,48 @@
               post
             </button>
 
+
             <span id="charCount">
               0 / 500
             </span>
 
+
           </div>
 
 
-          <!-- STATUS MESSAGE -->
+
+          <!-- ===================== -->
+          <!-- STATUS MESSAGE        -->
+          <!-- ===================== -->
+
           <p
             id="status"
             class="status"
             aria-live="polite"
           ></p>
 
+
         </form>
+
 
       </section>
 
 
-      <!-- CURRENT FOLDER MESSAGES -->
+
+      <!-- ========================= -->
+      <!-- MESSAGES                  -->
+      <!-- ========================= -->
+
       <section>
 
+
         <div class="board-title">
+
 
           <h2 id="currentFolderTitle">
             messages
           </h2>
+
 
           <button
             id="refreshBoard"
@@ -223,42 +330,81 @@
             refresh
           </button>
 
+
         </div>
 
 
-        <!-- EMPTY FOLDER MESSAGE -->
+
+        <!--
+          This appears when the
+          selected folder has no posts.
+        -->
+
         <div id="emptyState">
+
           no messages in this folder yet.
+
         </div>
 
 
-        <!-- POSTS ARE INSERTED HERE -->
+
+        <!--
+          Posts from Supabase
+          are inserted here.
+        -->
+
         <div id="messageBoard"></div>
+
 
       </section>
 
+
     </div>
+
 
   </main>
 
 
-  <!-- FOOTER -->
+
+  <!-- ============================= -->
+  <!-- FOOTER                        -->
+  <!-- ============================= -->
+
   <footer>
-    <span>message board</span>
+
+    <span>
+      message board
+    </span>
+
   </footer>
 
 
-  <!-- SUPABASE JAVASCRIPT LIBRARY -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- ============================= -->
+  <!-- SUPABASE                      -->
+  <!-- ============================= -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+  ></script>
 
 
-  <!-- YOUR SUPABASE URL AND PUBLIC KEY -->
+
+  <!-- ============================= -->
+  <!-- YOUR SUPABASE CONFIGURATION   -->
+  <!-- ============================= -->
+
   <script src="config.js"></script>
 
 
-  <!-- MESSAGE BOARD JAVASCRIPT -->
+
+  <!-- ============================= -->
+  <!-- MESSAGE BOARD JAVASCRIPT      -->
+  <!-- ============================= -->
+
   <script src="script.js"></script>
 
 
 </body>
+
 </html>
